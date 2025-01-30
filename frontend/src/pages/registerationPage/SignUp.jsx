@@ -30,27 +30,27 @@ function SignUpForm() {
           fullName: state.firstName + " " + state.lastName,
           email: state.email,
           password: state.password,
+          confirmPassword: state.confirmPassword,
           role: state.role,
         },
         {
           headers: { "Content-Type": "application/json" },
         }
       );
-
       console.log("Response:", response.data);
       alert("User data sent successfully!");
+      setState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        role: "",
+      });
     } catch (error) {
       console.error("Error sending data:", error);
       alert("Error sending data");
     }
-    setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      role: "",
-    });
   };
 
   return (

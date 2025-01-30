@@ -20,3 +20,14 @@ def create_user(request):
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
     return JsonResponse({"error": "Invalid request method"}, status=405)
+
+@csrf_exempt 
+def sign_in_user(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)  # Parse JSON data from request
+            print("Sign In User:", data)  # Print in terminal
+            return JsonResponse({"success": True, "data": data}, status=201)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)
+    return JsonResponse({"error": "Invalid request method"}, status=405)

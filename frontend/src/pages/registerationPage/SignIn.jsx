@@ -1,5 +1,8 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function SignInForm() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     email: "",
     password: "",
@@ -12,17 +15,32 @@ function SignInForm() {
     });
   };
 
-  const handleOnSubmit = (evt) => {
+  const handleOnSubmit = async (evt) => {
     evt.preventDefault();
 
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/sign-in-user/",
+        state,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: "",
-      });
+      console.log("Response:", response.data);
+      if (response.data.success) {
+        alert(`User ${state.email} Signed in Successfully!`);
+        setState({
+          email: "",
+          password: "",
+        });
+        navigate("/calender");
+      } else {
+        alert(`Invalid Credentials!`);
+      }
+    } catch (error) {
+      console.error("Error sending data:", error);
+      alert("Error sending data");
     }
   };
 
