@@ -1,0 +1,57 @@
+.modal-content {
+  background: linear-gradient(to right, #ffffff, #f9fafb);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table td {
+  padding: 10px 15px;
+  vertical-align: top;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-value {
+  color: #333;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #4a90e2;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
